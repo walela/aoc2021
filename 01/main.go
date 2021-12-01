@@ -8,6 +8,18 @@ import (
 	"strconv"
 )
 
+/*
+
+	This is my very first foray into Go after a long period so I'm fairly confident
+	a lot of this is a hacky mess.
+
+	Either way, I decided to read the contents of the input file into an array and convert them
+	into ints, and do a trivial for loop comparing the current value with the previous value.
+	Not sure if that's the fastest way as well!
+
+	I'll probably revise this over time but pretty happy I got the solution at all...onwards :)
+*/
+
 func main() {
 	file, err := os.Open("input.txt")
 	if err != nil {
@@ -17,6 +29,8 @@ func main() {
 
 	s := bufio.NewScanner(file)
 	var depths []int
+
+	// loop through the file and append depth measurements to `depths` array
 	for s.Scan() {
 		depth, err := strconv.Atoi(s.Text())
 		if err != nil {
@@ -25,15 +39,20 @@ func main() {
 		}
 		depths = append(depths, depth)
 	}
-	count := 0
-	for index, element := range depths {
-		if index > 0 {
-			if element > depths[index-1] {
-				fmt.Println(element, "is greater than", depths[index-1])
-				count++
-			}
-		}
 
+	count := 0
+	for i := 1; i < len(depths); i++ {
+		if depths[i] > depths[i-1] {
+			count++
+		}
 	}
+	// for i, e := range depths {
+	// 	if i > 0 {
+	// 		if element > depths[index-1] {
+	// 			count++
+	// 		}
+	// 	}
+
+	// }
 	fmt.Println(count)
 }
