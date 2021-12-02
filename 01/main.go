@@ -8,16 +8,14 @@ import (
 	"strconv"
 )
 
-/*
-	This is my very first foray into Go after a long period so I'm fairly confident
-	a lot of this is a hacky mess.
+// This is my very first foray into Go after a long period so I'm fairly confident
+// a lot of this is a hacky mess.
 
-	Either way, I decided to read the contents of the input file into an array and convert them
-	into ints, and do a for loop comparing the current value with the previous value. Not sure if
-	that's the fastest way as well!
+// Either way, I decided to read the contents of the input file into an array and convert them
+// into ints, and do a for loop comparing the current value with the previous value. Not sure if
+// that's the fastest way as well!
 
-	I'll probably revise this over time but pretty happy I got the solution at all...onwards :)
-*/
+// I'll probably revise this over time but pretty happy I got the solution at all...onwards :)
 
 func main() {
 	file, err := os.Open("input.txt")
