@@ -9,6 +9,10 @@ import (
 	"strings"
 )
 
+// Pretty similar to day 1 and pretty straightforward again.
+// I decided to do the computation in one pass this time which
+// made things a little neater. I'm not doing much error handling
+// though, which is something I might decide to do in future
 func main() {
 	file, err := os.Open("input.txt")
 	if err != nil {
@@ -22,15 +26,13 @@ func main() {
 
 	for s.Scan() {
 		command := strings.Split(s.Text(), " ")
+		delta, _ := strconv.Atoi(command[1])
 		switch command[0] {
 		case "forward":
-			delta, _ := strconv.Atoi(command[1])
 			alignment += delta
 		case "up":
-			delta, _ := strconv.Atoi(command[1])
 			depth -= delta
 		case "down":
-			delta, _ := strconv.Atoi(command[1])
 			depth += delta
 		default:
 		}
