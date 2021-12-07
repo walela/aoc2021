@@ -19,7 +19,7 @@ func main() {
 	check(err)
 	defer file.Close()
 
-	// gamma, epsilon := 0, 0
+	gamma, epsilon := "", ""
 
 	s := bufio.NewScanner(file)
 	var lines []string
@@ -39,6 +39,14 @@ func main() {
 				zeroes++
 			}
 		}
-		fmt.Println(zeroes)
+		// if zeroes are greater than half, append to gamma
+		if zeroes > length/2 {
+			gamma += "0"
+			epsilon += "1"
+		} else {
+			epsilon += "0"
+			gamma += "1"
+		}
 	}
+	fmt.Println(gamma, epsilon)
 }
