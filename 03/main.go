@@ -19,6 +19,8 @@ func main() {
 	check(err)
 	defer file.Close()
 
+	// gamma, epsilon := 0, 0
+
 	s := bufio.NewScanner(file)
 	var lines []string
 
@@ -26,5 +28,17 @@ func main() {
 		line := s.Text()
 		lines = append(lines, line)
 	}
-	fmt.Println(lines)
+
+	// i and j represent the breadth and length of the lines
+	// matrix
+	breadth, length := len(lines[0]), len(lines)
+	for i := 0; i < breadth; i++ {
+		zeroes := 0
+		for j := 0; j < length; j++ {
+			if lines[j][i] == '0' {
+				zeroes++
+			}
+		}
+		fmt.Println(zeroes)
+	}
 }
