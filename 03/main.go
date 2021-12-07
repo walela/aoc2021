@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"strconv"
 )
 
 func check(err error) {
@@ -48,5 +49,8 @@ func main() {
 			gamma += "1"
 		}
 	}
-	fmt.Println(gamma, epsilon)
+	grate, _ := strconv.ParseInt(gamma, 2, 64)
+	erate, _ := strconv.ParseInt(epsilon, 2, 64)
+
+	fmt.Println(grate * erate)
 }
